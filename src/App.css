@@ -1,0 +1,55 @@
+body {
+  background-color: antiquewhite;
+}
+
+.app {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  border: 2px solid;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+
+.cell {
+  user-select: none;
+  width: 100px;
+  height: 100px;
+  border: 1px solid;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  transition-duration: .5s;
+  background-color: #91ab2a;
+  padding: 12px 40px;
+  border-radius: 40px;
+}
+
+button {
+  border-radius: 40px;
+  background-color: #efefef;
+  padding: 12px 40px;
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid #ef35ab;
+  transition-duration: .2s;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #dedede;
+}
+
+button:active {
+  border: 2px solid orange;
+  background-color: #cdcdcd;
+}
