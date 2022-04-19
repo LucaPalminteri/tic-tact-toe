@@ -9,6 +9,11 @@ body {
   align-items: center;
 }
 
+h1 { 
+  padding: 6px 20px;
+  border-bottom: 4px solid;
+}
+
 .container {
   border: 2px solid;
   display: grid;
@@ -20,8 +25,9 @@ body {
   user-select: none;
   width: 100px;
   height: 100px;
+  line-height: 60px;
   border: 1px solid;
-  font-size: 60px;
+  font-size: 75px;
   display: flex;
   justify-content: center;
   align-items: center;

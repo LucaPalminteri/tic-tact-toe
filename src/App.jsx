@@ -9,17 +9,24 @@ function App() {
   const [o,setO] = useState([])
   const [winner,setWinner] = useState()
   const [newGame,setNewGame] = useState(false)
+  const [ties,setTies] = useState(0)
+  const [xWins,setXWins] = useState(0)
+  const [oWins,setOWins] = useState(0)
+
+  if (newGame) {
+    console.log("truw")
+  }
 
   useEffect(()=>{
     if(findResult(x)){
       setResult(true)
+      setXWins(prev => prev + 1)
       setWinner('X')
-      console.log("X ganador");
     } 
     if(findResult(o))  {
       setResult(true) 
+      setOWins(prev => prev + 1)
       setWinner('O')
-      console.log("O ganador");
     }
     
   },[count])
@@ -36,8 +43,7 @@ function App() {
           return
         }
         setX(prev => [...prev,index])
-        event.target.innerHTML = "x"
-        
+        event.target.innerHTML = "X"
       }
       else {
         let index = event.target.classList[1]
@@ -45,12 +51,12 @@ function App() {
           return
         };
         setO(prev => [...prev,index])
-        event.target.innerHTML = "o"
+        event.target.innerHTML = "O"
       }
       setCount(prev => prev+1)
       if(count === 8) {
-        console.log('draw')
         setResult(true)
+        setTies(prev => prev + 1)
       }
     }
   }
@@ -80,7 +86,8 @@ function App() {
   return (
     <div className='app'>
       <h1>Tic Tac Toe</h1>
-      {!result ?<div className='container'>
+      {!result ? 
+      <div className='container'>
         <div onClick={toggle} className='cell 1'></div>
         <div onClick={toggle} className='cell 2'></div>
         <div onClick={toggle} className='cell 3'></div>
@@ -91,12 +98,21 @@ function App() {
         <div onClick={toggle} className='cell 8'></div>
         <div onClick={toggle} className='cell 9'></div>
       </div> : <></>}
+      {winner || result ?
+      <div>
+        <h4>Times X wins: {xWins}</h4>
+        <h4>Times O wins: {oWins}</h4>
+        <h4>Times ties: {ties}</h4>
+      </div>:
+      <></>}
       <h3 className={winner || result ? 'message' : ''}>
-      {winner === 'X' ? 'Winner: player X' : winner === 'O' ? 'Winner: player O' : result ? 'Draft!' : <></> }
+      {winner === 'X' ? 'Winner: player X' : winner === 'O' ? 'Winner: player O' : result ? 'Tie!' : <></> }
       </h3>
       {winner || result ? <button onClick={reset}>Play Again</button>: ''}
     </div>
   )
+  
 }
+
 
 export default App
