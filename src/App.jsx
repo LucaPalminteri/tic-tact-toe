@@ -8,14 +8,9 @@ function App() {
   const [x,setX] = useState([])
   const [o,setO] = useState([])
   const [winner,setWinner] = useState()
-  const [newGame,setNewGame] = useState(false)
   const [ties,setTies] = useState(0)
   const [xWins,setXWins] = useState(0)
   const [oWins,setOWins] = useState(0)
-
-  if (newGame) {
-    console.log("truw")
-  }
 
   useEffect(()=>{
     if(findResult(x)){
@@ -36,7 +31,6 @@ function App() {
       console.log("end of the game");
     }
     else {
-
       if(count%2 === 0) {
         let index = event.target.classList[1]
         if(x.includes(index) || o.includes(index)){
@@ -97,7 +91,7 @@ function App() {
         <div onClick={toggle} className='cell 7'></div>
         <div onClick={toggle} className='cell 8'></div>
         <div onClick={toggle} className='cell 9'></div>
-      </div> : <></>}
+      </div> : <div></div>}
       {winner || result ?
       <div>
         <h4>Times X wins: {xWins}</h4>
@@ -113,6 +107,5 @@ function App() {
   )
   
 }
-
 
 export default App
